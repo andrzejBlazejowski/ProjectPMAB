@@ -1,0 +1,863 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="PMABModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatDate" Type="datetime" Nullable="false" />
+          <Property Name="ModificationDate" Type="datetime" />
+          <Property Name="CretedBy" Type="varchar" MaxLength="50" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
+          <Property Name="StreetName" Type="varchar" MaxLength="50" />
+          <Property Name="StreetNumber" Type="varchar" MaxLength="10" />
+          <Property Name="City" Type="varchar" MaxLength="50" />
+          <Property Name="State" Type="varchar" MaxLength="50" />
+          <Property Name="Country" Type="varchar" MaxLength="50" />
+          <Property Name="PostalCode" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Brand">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatDate" Type="datetime" Nullable="false" />
+          <Property Name="ModificationDate" Type="datetime" />
+          <Property Name="CretedBy" Type="varchar" MaxLength="50" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="500" />
+          <Property Name="AddressId" Type="int" />
+        </EntityType>
+        <EntityType Name="CommodityCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="ModificationDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Comodity">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatDate" Type="datetime" Nullable="false" />
+          <Property Name="ModificationDate" Type="datetime" />
+          <Property Name="CretedBy" Type="varchar" MaxLength="50" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" />
+          <Property Name="NetUnitPrice" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="VatRate" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="StorageSizeId" Type="int" />
+          <Property Name="brandId" Type="int" />
+          <Property Name="CommodityCategoryId" Type="int" />
+        </EntityType>
+        <EntityType Name="employee">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MiddleName" Type="varchar" MaxLength="50" />
+          <Property Name="LastName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="PeselNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatDate" Type="datetime" Nullable="false" />
+          <Property Name="ModificationDate" Type="datetime" />
+          <Property Name="CretedBy" Type="varchar" MaxLength="50" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
+          <Property Name="AddressId" Type="int" Nullable="false" />
+          <Property Name="EmployeeTypeId" Type="int" Nullable="false" />
+          <Property Name="warehouseId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="employeeType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatDate" Type="datetime" Nullable="false" />
+          <Property Name="ModificationDate" Type="datetime" />
+          <Property Name="CretedBy" Type="varchar" MaxLength="50" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="description" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="storage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatDate" Type="datetime" Nullable="false" />
+          <Property Name="ModificationDate" Type="datetime" />
+          <Property Name="CretedBy" Type="varchar" MaxLength="50" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
+          <Property Name="StorageStatusId" Type="int" />
+          <Property Name="StorageSizeId" Type="int" />
+        </EntityType>
+        <EntityType Name="storageSizes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatDate" Type="datetime" Nullable="false" />
+          <Property Name="ModificationDate" Type="datetime" />
+          <Property Name="CretedBy" Type="varchar" MaxLength="50" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="x" Type="int" />
+          <Property Name="y" Type="int" />
+          <Property Name="z" Type="int" />
+        </EntityType>
+        <EntityType Name="storageStatus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatDate" Type="datetime" Nullable="false" />
+          <Property Name="ModificationDate" Type="datetime" />
+          <Property Name="CretedBy" Type="varchar" MaxLength="50" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" />
+          <Property Name="Key" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="warhouse">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatDate" Type="datetime" Nullable="false" />
+          <Property Name="ModificationDate" Type="datetime" />
+          <Property Name="CretedBy" Type="varchar" MaxLength="50" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="description" Type="varchar" MaxLength="50" />
+          <Property Name="AddressId" Type="int" />
+        </EntityType>
+        <Association Name="FK_Brand_To_Address">
+          <End Role="Address" Type="Self.Address" Multiplicity="0..1" />
+          <End Role="Brand" Type="Self.Brand" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Brand">
+              <PropertyRef Name="AddressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Commodity_To_Address">
+          <End Role="Address" Type="Self.Address" Multiplicity="1" />
+          <End Role="employee" Type="Self.employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="employee">
+              <PropertyRef Name="AddressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Commodity_To_Brand">
+          <End Role="Brand" Type="Self.Brand" Multiplicity="0..1" />
+          <End Role="Comodity" Type="Self.Comodity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brand">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Comodity">
+              <PropertyRef Name="brandId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Commodity_To_ComodityCategory">
+          <End Role="CommodityCategory" Type="Self.CommodityCategory" Multiplicity="0..1" />
+          <End Role="Comodity" Type="Self.Comodity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommodityCategory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Comodity">
+              <PropertyRef Name="CommodityCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Commodity_To_EmployeeType">
+          <End Role="employeeType" Type="Self.employeeType" Multiplicity="1" />
+          <End Role="employee" Type="Self.employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employeeType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="employee">
+              <PropertyRef Name="EmployeeTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Commodity_To_StorageSizeId">
+          <End Role="storageSizes" Type="Self.storageSizes" Multiplicity="0..1" />
+          <End Role="Comodity" Type="Self.Comodity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="storageSizes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Comodity">
+              <PropertyRef Name="StorageSizeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Commodity_To_warehouse">
+          <End Role="warhouse" Type="Self.warhouse" Multiplicity="1" />
+          <End Role="employee" Type="Self.employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="warhouse">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="employee">
+              <PropertyRef Name="warehouseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Storage_To_AStatus">
+          <End Role="storageStatus" Type="Self.storageStatus" Multiplicity="0..1" />
+          <End Role="storage" Type="Self.storage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="storageStatus">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="storage">
+              <PropertyRef Name="StorageStatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Storage_To_Size">
+          <End Role="storageSizes" Type="Self.storageSizes" Multiplicity="0..1" />
+          <End Role="storage" Type="Self.storage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="storageSizes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="storage">
+              <PropertyRef Name="StorageSizeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Warhouse_To_Address">
+          <End Role="Address" Type="Self.Address" Multiplicity="0..1" />
+          <End Role="warhouse" Type="Self.warhouse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="warhouse">
+              <PropertyRef Name="AddressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PMABModelStoreContainer">
+          <EntitySet Name="Address" EntityType="Self.Address" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Brand" EntityType="Self.Brand" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CommodityCategory" EntityType="Self.CommodityCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Comodity" EntityType="Self.Comodity" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="employee" EntityType="Self.employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="employeeType" EntityType="Self.employeeType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="storage" EntityType="Self.storage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="storageSizes" EntityType="Self.storageSizes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="storageStatus" EntityType="Self.storageStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="warhouse" EntityType="Self.warhouse" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Brand_To_Address" Association="Self.FK_Brand_To_Address">
+            <End Role="Address" EntitySet="Address" />
+            <End Role="Brand" EntitySet="Brand" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Commodity_To_Address" Association="Self.FK_Commodity_To_Address">
+            <End Role="Address" EntitySet="Address" />
+            <End Role="employee" EntitySet="employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Commodity_To_Brand" Association="Self.FK_Commodity_To_Brand">
+            <End Role="Brand" EntitySet="Brand" />
+            <End Role="Comodity" EntitySet="Comodity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Commodity_To_ComodityCategory" Association="Self.FK_Commodity_To_ComodityCategory">
+            <End Role="CommodityCategory" EntitySet="CommodityCategory" />
+            <End Role="Comodity" EntitySet="Comodity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Commodity_To_EmployeeType" Association="Self.FK_Commodity_To_EmployeeType">
+            <End Role="employeeType" EntitySet="employeeType" />
+            <End Role="employee" EntitySet="employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Commodity_To_StorageSizeId" Association="Self.FK_Commodity_To_StorageSizeId">
+            <End Role="storageSizes" EntitySet="storageSizes" />
+            <End Role="Comodity" EntitySet="Comodity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Commodity_To_warehouse" Association="Self.FK_Commodity_To_warehouse">
+            <End Role="warhouse" EntitySet="warhouse" />
+            <End Role="employee" EntitySet="employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Storage_To_AStatus" Association="Self.FK_Storage_To_AStatus">
+            <End Role="storageStatus" EntitySet="storageStatus" />
+            <End Role="storage" EntitySet="storage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Storage_To_Size" Association="Self.FK_Storage_To_Size">
+            <End Role="storageSizes" EntitySet="storageSizes" />
+            <End Role="storage" EntitySet="storage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Warhouse_To_Address" Association="Self.FK_Warhouse_To_Address">
+            <End Role="Address" EntitySet="Address" />
+            <End Role="warhouse" EntitySet="warhouse" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PMABModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModificationDate" Type="DateTime" Precision="3" />
+          <Property Name="CretedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StreetName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StreetNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PostalCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Brand" Relationship="Self.FK_Brand_To_Address" FromRole="Address" ToRole="Brand" />
+          <NavigationProperty Name="employee" Relationship="Self.FK_Commodity_To_Address" FromRole="Address" ToRole="employee" />
+          <NavigationProperty Name="warhouse" Relationship="Self.FK_Warhouse_To_Address" FromRole="Address" ToRole="warhouse" />
+        </EntityType>
+        <EntityType Name="Brand">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModificationDate" Type="DateTime" Precision="3" />
+          <Property Name="CretedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="AddressId" Type="Int32" />
+          <NavigationProperty Name="Address" Relationship="Self.FK_Brand_To_Address" FromRole="Brand" ToRole="Address" />
+          <NavigationProperty Name="Comodity" Relationship="Self.FK_Commodity_To_Brand" FromRole="Brand" ToRole="Comodity" />
+        </EntityType>
+        <EntityType Name="CommodityCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModificationDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Comodity" Relationship="Self.FK_Commodity_To_ComodityCategory" FromRole="CommodityCategory" ToRole="Comodity" />
+        </EntityType>
+        <EntityType Name="Comodity">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModificationDate" Type="DateTime" Precision="3" />
+          <Property Name="CretedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NetUnitPrice" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="VatRate" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="StorageSizeId" Type="Int32" />
+          <Property Name="brandId" Type="Int32" />
+          <Property Name="CommodityCategoryId" Type="Int32" />
+          <NavigationProperty Name="Brand" Relationship="Self.FK_Commodity_To_Brand" FromRole="Comodity" ToRole="Brand" />
+          <NavigationProperty Name="CommodityCategory" Relationship="Self.FK_Commodity_To_ComodityCategory" FromRole="Comodity" ToRole="CommodityCategory" />
+          <NavigationProperty Name="storageSizes" Relationship="Self.FK_Commodity_To_StorageSizeId" FromRole="Comodity" ToRole="storageSizes" />
+        </EntityType>
+        <EntityType Name="employee">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PeselNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModificationDate" Type="DateTime" Precision="3" />
+          <Property Name="CretedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AddressId" Type="Int32" Nullable="false" />
+          <Property Name="EmployeeTypeId" Type="Int32" Nullable="false" />
+          <Property Name="warehouseId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Address" Relationship="Self.FK_Commodity_To_Address" FromRole="employee" ToRole="Address" />
+          <NavigationProperty Name="employeeType" Relationship="Self.FK_Commodity_To_EmployeeType" FromRole="employee" ToRole="employeeType" />
+          <NavigationProperty Name="warhouse" Relationship="Self.FK_Commodity_To_warehouse" FromRole="employee" ToRole="warhouse" />
+        </EntityType>
+        <EntityType Name="employeeType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModificationDate" Type="DateTime" Precision="3" />
+          <Property Name="CretedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="employee" Relationship="Self.FK_Commodity_To_EmployeeType" FromRole="employeeType" ToRole="employee" />
+        </EntityType>
+        <EntityType Name="storage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModificationDate" Type="DateTime" Precision="3" />
+          <Property Name="CretedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StorageStatusId" Type="Int32" />
+          <Property Name="StorageSizeId" Type="Int32" />
+          <NavigationProperty Name="storageStatus" Relationship="Self.FK_Storage_To_AStatus" FromRole="storage" ToRole="storageStatus" />
+          <NavigationProperty Name="storageSizes" Relationship="Self.FK_Storage_To_Size" FromRole="storage" ToRole="storageSizes" />
+        </EntityType>
+        <EntityType Name="storageSizes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModificationDate" Type="DateTime" Precision="3" />
+          <Property Name="CretedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="x" Type="Int32" />
+          <Property Name="y" Type="Int32" />
+          <Property Name="z" Type="Int32" />
+          <NavigationProperty Name="Comodity" Relationship="Self.FK_Commodity_To_StorageSizeId" FromRole="storageSizes" ToRole="Comodity" />
+          <NavigationProperty Name="storage" Relationship="Self.FK_Storage_To_Size" FromRole="storageSizes" ToRole="storage" />
+        </EntityType>
+        <EntityType Name="storageStatus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModificationDate" Type="DateTime" Precision="3" />
+          <Property Name="CretedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Key" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="storage" Relationship="Self.FK_Storage_To_AStatus" FromRole="storageStatus" ToRole="storage" />
+        </EntityType>
+        <EntityType Name="warhouse">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModificationDate" Type="DateTime" Precision="3" />
+          <Property Name="CretedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AddressId" Type="Int32" />
+          <NavigationProperty Name="Address" Relationship="Self.FK_Warhouse_To_Address" FromRole="warhouse" ToRole="Address" />
+          <NavigationProperty Name="employee" Relationship="Self.FK_Commodity_To_warehouse" FromRole="warhouse" ToRole="employee" />
+        </EntityType>
+        <Association Name="FK_Brand_To_Address">
+          <End Role="Address" Type="Self.Address" Multiplicity="0..1" />
+          <End Role="Brand" Type="Self.Brand" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Brand">
+              <PropertyRef Name="AddressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Commodity_To_Address">
+          <End Role="Address" Type="Self.Address" Multiplicity="1" />
+          <End Role="employee" Type="Self.employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="employee">
+              <PropertyRef Name="AddressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Warhouse_To_Address">
+          <End Role="Address" Type="Self.Address" Multiplicity="0..1" />
+          <End Role="warhouse" Type="Self.warhouse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="warhouse">
+              <PropertyRef Name="AddressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Commodity_To_Brand">
+          <End Role="Brand" Type="Self.Brand" Multiplicity="0..1" />
+          <End Role="Comodity" Type="Self.Comodity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brand">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Comodity">
+              <PropertyRef Name="brandId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Commodity_To_ComodityCategory">
+          <End Role="CommodityCategory" Type="Self.CommodityCategory" Multiplicity="0..1" />
+          <End Role="Comodity" Type="Self.Comodity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommodityCategory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Comodity">
+              <PropertyRef Name="CommodityCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Commodity_To_StorageSizeId">
+          <End Role="storageSizes" Type="Self.storageSizes" Multiplicity="0..1" />
+          <End Role="Comodity" Type="Self.Comodity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="storageSizes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Comodity">
+              <PropertyRef Name="StorageSizeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Commodity_To_EmployeeType">
+          <End Role="employeeType" Type="Self.employeeType" Multiplicity="1" />
+          <End Role="employee" Type="Self.employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employeeType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="employee">
+              <PropertyRef Name="EmployeeTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Commodity_To_warehouse">
+          <End Role="warhouse" Type="Self.warhouse" Multiplicity="1" />
+          <End Role="employee" Type="Self.employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="warhouse">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="employee">
+              <PropertyRef Name="warehouseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Storage_To_AStatus">
+          <End Role="storageStatus" Type="Self.storageStatus" Multiplicity="0..1" />
+          <End Role="storage" Type="Self.storage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="storageStatus">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="storage">
+              <PropertyRef Name="StorageStatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Storage_To_Size">
+          <End Role="storageSizes" Type="Self.storageSizes" Multiplicity="0..1" />
+          <End Role="storage" Type="Self.storage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="storageSizes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="storage">
+              <PropertyRef Name="StorageSizeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PMABEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Address" EntityType="Self.Address" />
+          <EntitySet Name="Brand" EntityType="Self.Brand" />
+          <EntitySet Name="CommodityCategory" EntityType="Self.CommodityCategory" />
+          <EntitySet Name="Comodity" EntityType="Self.Comodity" />
+          <EntitySet Name="employee" EntityType="Self.employee" />
+          <EntitySet Name="employeeType" EntityType="Self.employeeType" />
+          <EntitySet Name="storage" EntityType="Self.storage" />
+          <EntitySet Name="storageSizes" EntityType="Self.storageSizes" />
+          <EntitySet Name="storageStatus" EntityType="Self.storageStatus" />
+          <EntitySet Name="warhouse" EntityType="Self.warhouse" />
+          <AssociationSet Name="FK_Brand_To_Address" Association="Self.FK_Brand_To_Address">
+            <End Role="Address" EntitySet="Address" />
+            <End Role="Brand" EntitySet="Brand" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Commodity_To_Address" Association="Self.FK_Commodity_To_Address">
+            <End Role="Address" EntitySet="Address" />
+            <End Role="employee" EntitySet="employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Warhouse_To_Address" Association="Self.FK_Warhouse_To_Address">
+            <End Role="Address" EntitySet="Address" />
+            <End Role="warhouse" EntitySet="warhouse" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Commodity_To_Brand" Association="Self.FK_Commodity_To_Brand">
+            <End Role="Brand" EntitySet="Brand" />
+            <End Role="Comodity" EntitySet="Comodity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Commodity_To_ComodityCategory" Association="Self.FK_Commodity_To_ComodityCategory">
+            <End Role="CommodityCategory" EntitySet="CommodityCategory" />
+            <End Role="Comodity" EntitySet="Comodity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Commodity_To_StorageSizeId" Association="Self.FK_Commodity_To_StorageSizeId">
+            <End Role="storageSizes" EntitySet="storageSizes" />
+            <End Role="Comodity" EntitySet="Comodity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Commodity_To_EmployeeType" Association="Self.FK_Commodity_To_EmployeeType">
+            <End Role="employeeType" EntitySet="employeeType" />
+            <End Role="employee" EntitySet="employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Commodity_To_warehouse" Association="Self.FK_Commodity_To_warehouse">
+            <End Role="warhouse" EntitySet="warhouse" />
+            <End Role="employee" EntitySet="employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Storage_To_AStatus" Association="Self.FK_Storage_To_AStatus">
+            <End Role="storageStatus" EntitySet="storageStatus" />
+            <End Role="storage" EntitySet="storage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Storage_To_Size" Association="Self.FK_Storage_To_Size">
+            <End Role="storageSizes" EntitySet="storageSizes" />
+            <End Role="storage" EntitySet="storage" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PMABModelStoreContainer" CdmEntityContainer="PMABEntities">
+          <EntitySetMapping Name="Address">
+            <EntityTypeMapping TypeName="PMABModel.Address">
+              <MappingFragment StoreEntitySet="Address">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatDate" ColumnName="CreatDate" />
+                <ScalarProperty Name="ModificationDate" ColumnName="ModificationDate" />
+                <ScalarProperty Name="CretedBy" ColumnName="CretedBy" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="StreetName" ColumnName="StreetName" />
+                <ScalarProperty Name="StreetNumber" ColumnName="StreetNumber" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Brand">
+            <EntityTypeMapping TypeName="PMABModel.Brand">
+              <MappingFragment StoreEntitySet="Brand">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatDate" ColumnName="CreatDate" />
+                <ScalarProperty Name="ModificationDate" ColumnName="ModificationDate" />
+                <ScalarProperty Name="CretedBy" ColumnName="CretedBy" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="AddressId" ColumnName="AddressId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CommodityCategory">
+            <EntityTypeMapping TypeName="PMABModel.CommodityCategory">
+              <MappingFragment StoreEntitySet="CommodityCategory">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="ModificationDate" ColumnName="ModificationDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Comodity">
+            <EntityTypeMapping TypeName="PMABModel.Comodity">
+              <MappingFragment StoreEntitySet="Comodity">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatDate" ColumnName="CreatDate" />
+                <ScalarProperty Name="ModificationDate" ColumnName="ModificationDate" />
+                <ScalarProperty Name="CretedBy" ColumnName="CretedBy" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="NetUnitPrice" ColumnName="NetUnitPrice" />
+                <ScalarProperty Name="VatRate" ColumnName="VatRate" />
+                <ScalarProperty Name="StorageSizeId" ColumnName="StorageSizeId" />
+                <ScalarProperty Name="brandId" ColumnName="brandId" />
+                <ScalarProperty Name="CommodityCategoryId" ColumnName="CommodityCategoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="employee">
+            <EntityTypeMapping TypeName="PMABModel.employee">
+              <MappingFragment StoreEntitySet="employee">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="PeselNumber" ColumnName="PeselNumber" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatDate" ColumnName="CreatDate" />
+                <ScalarProperty Name="ModificationDate" ColumnName="ModificationDate" />
+                <ScalarProperty Name="CretedBy" ColumnName="CretedBy" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="AddressId" ColumnName="AddressId" />
+                <ScalarProperty Name="EmployeeTypeId" ColumnName="EmployeeTypeId" />
+                <ScalarProperty Name="warehouseId" ColumnName="warehouseId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="employeeType">
+            <EntityTypeMapping TypeName="PMABModel.employeeType">
+              <MappingFragment StoreEntitySet="employeeType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatDate" ColumnName="CreatDate" />
+                <ScalarProperty Name="ModificationDate" ColumnName="ModificationDate" />
+                <ScalarProperty Name="CretedBy" ColumnName="CretedBy" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="storage">
+            <EntityTypeMapping TypeName="PMABModel.storage">
+              <MappingFragment StoreEntitySet="storage">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatDate" ColumnName="CreatDate" />
+                <ScalarProperty Name="ModificationDate" ColumnName="ModificationDate" />
+                <ScalarProperty Name="CretedBy" ColumnName="CretedBy" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="StorageStatusId" ColumnName="StorageStatusId" />
+                <ScalarProperty Name="StorageSizeId" ColumnName="StorageSizeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="storageSizes">
+            <EntityTypeMapping TypeName="PMABModel.storageSizes">
+              <MappingFragment StoreEntitySet="storageSizes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatDate" ColumnName="CreatDate" />
+                <ScalarProperty Name="ModificationDate" ColumnName="ModificationDate" />
+                <ScalarProperty Name="CretedBy" ColumnName="CretedBy" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="x" ColumnName="x" />
+                <ScalarProperty Name="y" ColumnName="y" />
+                <ScalarProperty Name="z" ColumnName="z" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="storageStatus">
+            <EntityTypeMapping TypeName="PMABModel.storageStatus">
+              <MappingFragment StoreEntitySet="storageStatus">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatDate" ColumnName="CreatDate" />
+                <ScalarProperty Name="ModificationDate" ColumnName="ModificationDate" />
+                <ScalarProperty Name="CretedBy" ColumnName="CretedBy" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Key" ColumnName="Key" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="warhouse">
+            <EntityTypeMapping TypeName="PMABModel.warhouse">
+              <MappingFragment StoreEntitySet="warhouse">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatDate" ColumnName="CreatDate" />
+                <ScalarProperty Name="ModificationDate" ColumnName="ModificationDate" />
+                <ScalarProperty Name="CretedBy" ColumnName="CretedBy" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="AddressId" ColumnName="AddressId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
