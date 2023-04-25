@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using wcfService.Model.Entities;
 
 namespace wcfService.Model.EntitiesForView
 {
@@ -9,5 +10,18 @@ namespace wcfService.Model.EntitiesForView
     {
         public string Name { get; set; }
         public string Description { get; set; }
+
+        public EployeeTypeForView() { }
+        public EployeeTypeForView(employeeType empType)
+        {
+            Id = empType.Id;
+            CreatedBy = empType.CretedBy;
+            ModifiedBy = empType.ModifiedBy;
+            CreatedDate = empType.CreatDate;
+            ModifiedDate = (DateTime)empType.ModificationDate;
+            IsActive = empType.IsActive;
+            Name = empType.name;
+            Description = empType.description;
+        }
     }
 }

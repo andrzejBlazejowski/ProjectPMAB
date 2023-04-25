@@ -83,6 +83,8 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Hlpers\StorageSizeHelper.cs" />
+    <Compile Include="Hlpers\AddressHelper.cs" />
     <Compile Include="Model\EntitiesForView\BaseModelForView.cs" />
     <Compile Include="Model\EntitiesForView\AddresForView.cs" />
     <Compile Include="Model\EntitiesForView\BrandForView.cs" />
@@ -92,7 +94,7 @@
     <Compile Include="Model\EntitiesForView\EployeeTypeForView.cs" />
     <Compile Include="Model\EntitiesForView\StorageForView.cs" />
     <Compile Include="Model\EntitiesForView\StorageSizeForView.cs" />
-    <Compile Include="Model\EntitiesForView\StorageStatus.cs" />
+    <Compile Include="Model\EntitiesForView\StorageStatusForView.cs" />
     <Compile Include="Model\EntitiesForView\WarhouseForView.cs" />
     <Compile Include="Model\Entities\Address.cs">
       <DependentUpon>Model1.tt</DependentUpon>

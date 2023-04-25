@@ -9,9 +9,9 @@ namespace wcfService.Model
     {
         public int Id { get; set; }
         public bool IsActive { get; set; }
-        public int CreatedBy { get; set; }
-        public int ModifiedBy { get; set; }
-        public DateTime ModifiedTime { get; set; }
-        public DateTime CreatedTime { get; set; }
+        public string CreatedBy { get; set; }
+        public string ModifiedBy { get; set; }
+        public DateTime ModifiedDate { get; set; }
+        public DateTime CreatedDate { get; set; }
     }
 }
