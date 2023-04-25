@@ -27,17 +27,32 @@ namespace wcfService
 
         public List<BrandForView> GetBrands()
         {
-            throw new NotImplementedException();
+            var db = new PMABEntities1();
+            var query = from items in db.Brand select items;
+
+            return query.ToList()
+            .Select(items => new BrandForView(items))
+            .ToList();
         }
 
         public List<CommodityForView> GetCommodities()
         {
-            throw new NotImplementedException();
+            var db = new PMABEntities1();
+            var query = from items in db.Comodity select items;
+
+            return query.ToList()
+            .Select(items => new CommodityForView(items))
+            .ToList();
         }
 
         public List<CommodityCategoryForView> GetCommodityCategories()
         {
-            throw new NotImplementedException();
+            var db = new PMABEntities1();
+            var query = from items in db.CommodityCategory select items;
+
+            return query.ToList()
+            .Select(items => new CommodityCategoryForView(items))
+            .ToList();
         }
 
         public string GetData(int value)
@@ -60,32 +75,62 @@ namespace wcfService
 
         public List<EmployeeForView> GetEmployees()
         {
-            throw new NotImplementedException();
+            var db = new PMABEntities1();
+            var query = from items in db.employee select items;
+
+            return query.ToList()
+            .Select(items => new EmployeeForView(items))
+            .ToList();
         }
 
         public List<EployeeTypeForView> GetEmployeeTypes()
         {
-            throw new NotImplementedException();
+            var db = new PMABEntities1();
+            var query = from items in db.employeeType select items;
+
+            return query.ToList()
+            .Select(items => new EployeeTypeForView(items))
+            .ToList();
         }
 
         public List<StorageForView> GetStorages()
         {
-            throw new NotImplementedException();
+            var db = new PMABEntities1();
+            var query = from items in db.storage select items;
+
+            return query.ToList()
+            .Select(items => new StorageForView(items))
+            .ToList();
         }
 
         public List<StorageSizeForView> GetStorageSizes()
         {
-            throw new NotImplementedException();
+            var db = new PMABEntities1();
+            var query = from items in db.storageSizes select items;
+
+            return query.ToList()
+            .Select(items => new StorageSizeForView(items))
+            .ToList();
         }
 
         public List<StorageStatusForView> GetStorageStautses()
         {
-            throw new NotImplementedException();
+            var db = new PMABEntities1();
+            var query = from items in db.storageStatus select items;
+
+            return query.ToList()
+            .Select(items => new StorageStatusForView(items))
+            .ToList();
         }
 
         public List<WarhouseForView> GetWarehouses()
         {
-            throw new NotImplementedException();
+            var db = new PMABEntities1();
+            var query = from items in db.warhouse select items;
+
+            return query.ToList()
+            .Select(items => new WarhouseForView(items))
+            .ToList();
         }
     }
 }
