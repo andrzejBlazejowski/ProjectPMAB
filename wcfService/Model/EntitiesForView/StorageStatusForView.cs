@@ -5,7 +5,7 @@ using System.Web;
 
 namespace wcfService.Model.EntitiesForView
 {
-    public class StorageStatus:BaseModelForView
+    public class StorageStatusForView:BaseModelForView
     {
         public string Name { get; set; }
         public string Description { get; set; }

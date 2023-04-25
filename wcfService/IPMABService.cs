@@ -6,6 +6,7 @@ using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
 using wcfService.Model;
+using wcfService.Model.Entities;
 using wcfService.Model.EntitiesForView;
 
 namespace wcfService
@@ -22,10 +23,28 @@ namespace wcfService
         List<BrandForView> GetBrands();
 
         [OperationContract]
-        List<CommodityCategoryForView> GetCommodity();
+        List<CommodityForView> GetCommodities();
 
         [OperationContract]
-        List<CommodityCategoryForView> GetCommodity();
+        List<CommodityCategoryForView> GetCommodityCategories();
+
+        [OperationContract]
+        List<EmployeeForView> GetEmployees();
+
+        [OperationContract]
+        List<EployeeTypeForView> GetEmployeeTypes();
+
+        [OperationContract]
+        List<StorageForView> GetStorages();
+
+        [OperationContract]
+        List<StorageSizeForView> GetStorageSizes();
+
+        [OperationContract]
+        List<StorageStatusForView> GetStorageStautses();
+
+        [OperationContract]
+        List<WarhouseForView> GetWarehouses();
     }
 
 
