@@ -13,10 +13,10 @@ namespace wcfService.Model.Entities
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class PMABEntities : DbContext
+    public partial class PMABEntities1 : DbContext
     {
-        public PMABEntities()
-            : base("name=PMABEntities")
+        public PMABEntities1()
+            : base("name=PMABEntities1")
         {
         }
     

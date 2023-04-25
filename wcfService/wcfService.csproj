@@ -69,41 +69,93 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Model\Entities\PMAB.Context.tt">
+    <Content Include="Model\Entities\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>PMAB.Context.cs</LastGenOutput>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Service1.svc" />
+    <Content Include="Model\Entities\Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
+    <Content Include="PMABService.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\Entities\PMAB.Context.cs">
+    <Compile Include="Model\EntitiesForView\BaseModelForView.cs" />
+    <Compile Include="Model\EntitiesForView\AddresForView.cs" />
+    <Compile Include="Model\EntitiesForView\BrandForView.cs" />
+    <Compile Include="Model\EntitiesForView\CommodityCategoryForView.cs" />
+    <Compile Include="Model\EntitiesForView\CommodityForView.cs" />
+    <Compile Include="Model\EntitiesForView\EmployeeForView.cs" />
+    <Compile Include="Model\EntitiesForView\EployeeTypeForView.cs" />
+    <Compile Include="Model\EntitiesForView\StorageForView.cs" />
+    <Compile Include="Model\EntitiesForView\StorageSizeForView.cs" />
+    <Compile Include="Model\EntitiesForView\StorageStatus.cs" />
+    <Compile Include="Model\EntitiesForView\WarhouseForView.cs" />
+    <Compile Include="Model\Entities\Address.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Entities\Brand.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Entities\CommodityCategory.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Entities\Comodity.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Entities\employee.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Entities\employeeType.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Entities\Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>PMAB.Context.tt</DependentUpon>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\Entities\PMAB.Designer.cs">
+    <Compile Include="Model\Entities\Model1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>PMAB.edmx</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Service1.svc.cs">
-      <DependentUpon>Service1.svc</DependentUpon>
+    <Compile Include="Model\Entities\Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
-    <Compile Include="IService1.cs" />
+    <Compile Include="Model\Entities\storage.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Entities\storageSizes.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Entities\storageStatus.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Entities\warhouse.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PMABService.svc.cs">
+      <DependentUpon>PMABService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="IPMABService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="Model\Entities\PMAB.edmx">
+    <EntityDeploy Include="Model\Entities\Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>PMAB.Designer.cs</LastGenOutput>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Model\Entities\PMAB.edmx.diagram">
-      <DependentUpon>PMAB.edmx</DependentUpon>
-    </None>
+    <Content Include="Model\Entities\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

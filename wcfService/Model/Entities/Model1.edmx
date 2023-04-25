@@ -620,7 +620,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="PMABEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="PMABEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Address" EntityType="Self.Address" />
           <EntitySet Name="Brand" EntityType="Self.Brand" />
           <EntitySet Name="CommodityCategory" EntityType="Self.CommodityCategory" />
@@ -677,7 +677,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="PMABModelStoreContainer" CdmEntityContainer="PMABEntities">
+        <EntityContainerMapping StorageEntityContainer="PMABModelStoreContainer" CdmEntityContainer="PMABEntities1">
           <EntitySetMapping Name="Address">
             <EntityTypeMapping TypeName="PMABModel.Address">
               <MappingFragment StoreEntitySet="Address">

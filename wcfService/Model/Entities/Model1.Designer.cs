@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\andrz\source\repos\zajecia\mobilne\ProjectPMAB\wcfService\Model\Entities\PMAB.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\andrz\source\repos\zajecia\mobilne\ProjectPMAB\wcfService\Model\Entities\Model1.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

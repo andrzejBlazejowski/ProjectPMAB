@@ -5,21 +5,27 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+using wcfService.Model;
+using wcfService.Model.EntitiesForView;
 
 namespace wcfService
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IService1" in both code and config file together.
+    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IPMABService" in both code and config file together.
     [ServiceContract]
-    public interface IService1
+    public interface IPMABService
     {
+        [OperationContract]
+        List<AddresForView> GetAddresses();
+
 
         [OperationContract]
-        string GetData(int value);
+        List<BrandForView> GetBrands();
 
         [OperationContract]
-        CompositeType GetDataUsingDataContract(CompositeType composite);
+        List<CommodityCategoryForView> GetCommodity();
 
-        // TODO: Add your service operations here
+        [OperationContract]
+        List<CommodityCategoryForView> GetCommodity();
     }
 
 
