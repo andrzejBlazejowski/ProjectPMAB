@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Web;
 using System.Xml.Linq;
 using wcfService.Model.Entities;
 
 namespace wcfService.Model.EntitiesForView
 {
+    [DataContract]
     public class StorageForView:BaseModelForView
     {
         public string Status { get; set; }

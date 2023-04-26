@@ -1,16 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Web;
 using wcfService.Hlpers;
 using wcfService.Model.Entities;
 
 namespace wcfService.Model.EntitiesForView
 {
+    [DataContract]
     public class BrandForView:BaseModelForView
     {
+        [DataMember]
         public string Name { get; set; }
+        [DataMember]
         public string Description{ get; set; }
+        [DataMember]
         public string Address { get; set; }
 
         public BrandForView() { }
